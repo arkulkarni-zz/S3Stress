@@ -7,6 +7,7 @@ var uuid = require('node-uuid');
 var pid = uuid.v1();
 
 AWS.config.update({region: 'us-west-2'});
+AWS.config.update({accessKeyId: 'AKIAJNZTQOEMA4FROXRA', secretAccessKey: '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'});
 var s3 = new AWS.S3(); 
 var db = new AWS.DynamoDB();
 
