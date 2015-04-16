@@ -1,0 +1,14 @@
+{
+  "name": "S3Stress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1.23",
+    "guid": "0.0.12",
+    "moment": "^2.10.2",
+    "node-uuid": "^1.4.3"
+  }
+}
