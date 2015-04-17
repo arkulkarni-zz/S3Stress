@@ -2,3 +2,4 @@ node_modules
 dist
 .tmp
 Thumbs.db
+config.json
