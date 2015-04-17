@@ -4,7 +4,7 @@ var moment = require('moment');
 var fs = require('fs');
 var AWS = require('aws-sdk'); 
 var uuid = require('node-uuid');
-var pid = uuid.v1();
+var pid = uuid.v4();
 var path = require('path');
 
 AWS.config.loadFromPath(path.resolve(__dirname, 'config.json'));
