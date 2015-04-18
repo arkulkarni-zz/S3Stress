@@ -52,11 +52,13 @@ function writeToS3(payload){
     else{
       ++transactionsProcessed;
       dataProcessed += payload.length;
-      //console.log("Successfully uploaded data to " + bucketName + "/" + keyName);
-      setTimeout(function(){
-        writeToS3(payload);  
-      }, 0);       
     }
+
+    // Recurse in all cases (error or not)
+    setTimeout(function(){
+      writeToS3(payload);  
+    }, 0);
+
   });
 }
 
@@ -64,11 +66,15 @@ function throughputCalculator(){
   var timeInterval = new Date() - previousTime;
   var dataThroughput = dataProcessed * 1000/ timeInterval;
   var transactionThroughput = transactionsProcessed  * 1000/ timeInterval;
-  var errorRate = errorEvents / (transactionsProcessed + errorEvents) * 100;
-  console.log('Data Processed: %d, Transactions Processed: %d, Time Interval: %d, Data Throughput: %d, Transaction Throughput: %d, Error Rate: %d\%',
+  var errorRate = 0;
+  if((transactionsProcessed + errorEvents) != 0) {
+    errorRate = errorEvents / (transactionsProcessed + errorEvents) * 100;
+  }
+  console.log('Data Processed: %d, Transactions Processed: %d, Time Interval: %d, Errors: %d, Data Throughput: %d, Transaction Throughput: %d, Error Rate: %d\%',
                dataProcessed, 
                transactionsProcessed,
                timeInterval, 
+               errorEvents,
                dataThroughput, 
                transactionThroughput,
                errorRate);
