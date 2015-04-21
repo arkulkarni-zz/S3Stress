@@ -20,7 +20,7 @@ setInterval(throughputCalculator, 60000);
 
 var sourceBucketName = 's3stress-source';
 var sourceKeyName = 'OneKBFile.txt';
-var localFileName = 'downloaded.dat';
+var localFileName = 'downloaded' + '_' + pid +'.dat';
 
 var getParams = {Bucket: sourceBucketName, Key: sourceKeyName};
 
