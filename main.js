@@ -71,7 +71,8 @@ function throughputCalculator(){
   if((transactionsProcessed + errorEvents) != 0) {
     errorRate = errorEvents / (transactionsProcessed + errorEvents) * 100;
   }
-  console.log('Data Processed: %d, Transactions Processed: %d, Time Interval: %d, Errors: %d, Data Throughput: %d, Transaction Throughput: %d, Error Rate: %d\%',
+  console.log('Pid: %s, Data Processed: %d, Transactions Processed: %d, Time Interval: %d, Errors: %d, Data Throughput: %d, Transaction Throughput: %d, Error Rate: %d\%',
+               pid,
                dataProcessed, 
                transactionsProcessed,
                timeInterval, 
