@@ -19,7 +19,7 @@ var previousTime = new Date();
 setInterval(throughputCalculator, 60000);
 
 var sourceBucketName = 's3stress-source';
-var sourceKeyName = 'FourMegFile.txt';
+var sourceKeyName = 'OneKBFile.txt';
 var localFileName = 'downloaded.dat';
 
 var getParams = {Bucket: sourceBucketName, Key: sourceKeyName};
@@ -87,6 +87,7 @@ function throughputCalculator(){
       DataThroughput: {'N': dataThroughput.toString()},
       TransactionThroughput: {'N': transactionThroughput.toString()},
       ErrorRate: {'N': errorRate.toString()},
+      Errors: {'N': errorEvents.toString()},      
       Interval: {'N': timeInterval.toString()}
     },
     TableName: 'S3StressResults'
