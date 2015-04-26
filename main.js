@@ -42,8 +42,9 @@ function setupUploadLoop(){
 
 function writeToS3(payload){
   var bucketName = 's3stress';
+  var folderPrefix = 'rawevents/someevent/2015/04/26/' + pid + '/';
   var keyPrefix = String('000000000' + getRandomInt(1, 1000000000)).slice(-9);
-  var keyName = keyPrefix + '_' + pid + '_' + sourceKeyName;
+  var keyName = folderPrefix + keyPrefix + '_' + pid + '_' + sourceKeyName;
   var putParams = {Bucket: bucketName, Key: keyName, Body: payload};
   s3.putObject(putParams, function(err, data) {
     if (err){
